@@ -1,4 +1,31 @@
 function Get-Presence {
+        <#
+		.SYNOPSIS
+			Gets the Microsoft Teams/Cloud Presence using the Microsoft Graph API (Beta endpoint)
+		
+		.DESCRIPTION
+			Gets the Microsoft Teams/Cloud Presence using the Microsoft Graph API (Beta endpoint)
+	
+
+		
+		.PARAMETER UPN
+			The UPN of the Account being used to Logon to the Microsoft Graph
+		
+		.PARAMETER ClientId
+            ClientId for an application registration that allows the "https://graph.microsoft.com/Presence.Read" scope the default "0f7120fe-24e2-49fc-a492-2d8032e41b68"
+            allows this but need to be consented in a Tenant 
+		
+		.PARAMETER TargetUser
+			User to return the presence for this is option is not entered the current accounts presence is returned
+		
+		
+        .EXAMPLE
+            Example 1 : Return the presence for the current User             
+            Get-Presence -UPN gscales@contoso.com
+	
+           Example 2 : Return the presence for the amother  User             
+           Get-Presence -UPN gscales@contoso.com -targetuser target@contoso.com
+	#>
     [CmdletBinding(DefaultParameterSetName = "Default")]
     param (
         [Parameter(Position = 0, Mandatory = $true)]
